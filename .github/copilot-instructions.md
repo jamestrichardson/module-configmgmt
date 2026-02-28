@@ -27,7 +27,7 @@ modules/<name>/
 
 ### Terraform style rules
 
-- Minimum Terraform version: `>= 1.5`
+- Minimum Terraform version: `>= 1.3`
 - Provider source: `denouche/awx`, version `>= 0.24`
 - Always define `description` and `type` for every `variable` block.
 - Always define `description` for every `output` block.
