@@ -1,0 +1,61 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false   # never cancel a release job mid-flight
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
+      upload_url: ${{ steps.release.outputs.upload_url }}
+    steps:
+      - name: Run release-please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  # Optional: tag the release with a v-prefixed semver tag as well so
+  # Terraform module sources can pin to a specific version.
+  tag-release:
+    name: Tag stable release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update major/minor floating tags
+        # Creates/moves tags like v1 and v1.2 to point at the new release SHA,
+        # following the convention used by terraform-aws-modules.
+        run: |
+          TAG="${{ needs.release-please.outputs.tag_name }}"
+          # Strip leading 'v'
+          VERSION="${TAG#v}"
+          MAJOR="v$(echo "$VERSION" | cut -d. -f1)"
+          MINOR="v$(echo "$VERSION" | cut -d. -f1-2)"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -fa "$MAJOR" -m "Release $MAJOR -> $TAG"
+          git tag -fa "$MINOR" -m "Release $MINOR -> $TAG"
+          git push origin "$MAJOR" --force
+          git push origin "$MINOR" --force

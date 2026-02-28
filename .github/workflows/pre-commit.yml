@@ -1,0 +1,70 @@
+name: Check pre-commit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pre-commit:
+    name: pre-commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~1"
+
+      - name: Install TFLint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: latest
+
+      - name: Install Trivy
+        uses: aquasecurity/trivy-action@0.29.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          exit-code: "0"         # let pre-commit handle the exit code
+          skip-setup-trivy: false
+      # Actual Trivy scan is delegated to the terraform_trivy pre-commit hook;
+      # the step above ensures the binary is available.
+
+      - name: Cache pre-commit environments
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          restore-keys: |
+            pre-commit-${{ runner.os }}-
+
+      - name: Install terraform-docs
+        run: |
+          TFDOCS_VERSION=$(curl -sSL https://api.github.com/repos/terraform-docs/terraform-docs/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+          curl -sSLo /tmp/terraform-docs.tar.gz \
+            "https://github.com/terraform-docs/terraform-docs/releases/download/${TFDOCS_VERSION}/terraform-docs-${TFDOCS_VERSION}-linux-amd64.tar.gz"
+          tar -xzf /tmp/terraform-docs.tar.gz -C /usr/local/bin terraform-docs
+          chmod +x /usr/local/bin/terraform-docs
+
+      - name: Run pre-commit (all files)
+        uses: pre-commit/action@v3.0.1
+        env:
+          SKIP: terraform_trivy   # Trivy is run as a separate security workflow

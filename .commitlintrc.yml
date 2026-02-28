@@ -1,0 +1,51 @@
+# .commitlintrc.yml
+# commitlint configuration – enforces the Conventional Commits specification.
+# See https://commitlint.js.org/reference/configuration.html
+
+extends:
+  - "@commitlint/config-conventional"
+
+rules:
+  # Allowed commit types
+  type-enum:
+    - 2
+    - always
+    - - feat
+      - fix
+      - docs
+      - style
+      - refactor
+      - perf
+      - test
+      - build
+      - ci
+      - chore
+      - revert
+
+  # Subject must not be empty
+  subject-empty:
+    - 2
+    - never
+
+  # Subject must not end with a period
+  subject-full-stop:
+    - 2
+    - never
+    - .
+
+  # Type must always be present
+  type-empty:
+    - 2
+    - never
+
+  # Header (type + scope + subject) max length
+  header-max-length:
+    - 2
+    - always
+    - 100
+
+  # Body lines max length
+  body-max-line-length:
+    - 1
+    - always
+    - 200

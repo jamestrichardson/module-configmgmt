@@ -1,0 +1,19 @@
+{
+  "github.copilot.chat.codeGeneration.instructions": [
+    {
+      "file": ".github/copilot-instructions.md"
+    },
+    {
+      "text": "All Terraform variables must have a description and an explicit type constraint (avoid 'any').",
+      "pattern": "**/variables.tf"
+    },
+    {
+      "text": "All Terraform outputs must have a description.",
+      "pattern": "**/outputs.tf"
+    },
+    {
+      "text": "Commit messages must follow Conventional Commits: <type>(<scope>): <subject>. Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.",
+      "pattern": "**/*.tf"
+    }
+  ]
+}
