@@ -1,0 +1,151 @@
+# .github/dependabot.yml
+# Dependabot configuration for automated dependency updates.
+# See https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+
+updates:
+  # ── GitHub Actions ──────────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    open-pull-requests-limit: 10
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  # ── Terraform (root) ────────────────────────────────────────────────────────
+  - package-ecosystem: "terraform"
+    directory: "/modules/organization"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "terraform"
+    directory: "/modules/team"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "terraform"
+    directory: "/modules/inventory"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "terraform"
+    directory: "/modules/credential"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: "terraform"
+    directory: "/examples/complete"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "examples"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "terraform"
+    directory: "/examples/organization"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "examples"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "terraform"
+    directory: "/examples/team"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "examples"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "terraform"
+    directory: "/examples/inventory"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "UTC"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "terraform"
+      - "examples"
+    open-pull-requests-limit: 5
