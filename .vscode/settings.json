@@ -12,8 +12,7 @@
       "pattern": "**/outputs.tf"
     },
     {
-      "text": "Commit messages must follow Conventional Commits: <type>(<scope>): <subject>. Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.",
-      "pattern": "**/*.tf"
+      "text": "Commit messages must follow Conventional Commits: <type>(<scope>): <subject>. Allowed types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert."
     }
   ]
 }
