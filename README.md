@@ -168,7 +168,7 @@ pre-commit run --all-files
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | [Build](.github/workflows/build.yml) | push / PR → `main` | SonarQube static analysis |
-| [Check pre-commit](.github/workflows/pre-commit.yml) | push / PR → `main` | Runs all pre-commit hooks (terraform fmt, tflint, trivy, terraform-docs) |
+| [Check pre-commit](.github/workflows/pre-commit.yml) | push / PR → `main` | Runs the main pre-commit hooks used in this repo (terraform fmt, tflint, terraform-docs) |
 | [Conventional Commits](.github/workflows/conventional-commits.yml) | PR opened/edited, push → `main` | Lints commit messages and PR titles against the Conventional Commits spec |
 | [Release Please](.github/workflows/release-please.yml) | push → `main` | Automates changelog generation, version bumping, and GitHub Releases |
 
