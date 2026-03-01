@@ -65,6 +65,6 @@ jobs:
           chmod +x /usr/local/bin/terraform-docs
 
       - name: Run pre-commit (all files)
-        uses: pre-commit/action@v3.0.1
+        run: pre-commit run --all-files
         env:
           SKIP: terraform_trivy   # Trivy is run as a separate security workflow

@@ -67,14 +67,18 @@ module "awx_credential" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 1.3 |
-| awx | >= 0.24 |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| awx | >= 0.24 |
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+No modules.
 
 ## Resources
 
@@ -86,19 +90,187 @@ module "awx_credential" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| create | Controls whether resources should be created. | `bool` | `true` | no |
-| name | Name of this credential. | `string` | n/a | yes |
-| organization\_id | Numeric ID of the organization this credential belongs to. | `number` | n/a | yes |
-| credential\_type\_id | Numeric ID of the credential type. | `number` | n/a | yes |
-| description | Optional description of this credential. | `string` | `null` | no |
-| inputs | JSON or YAML encoded credential inputs. Sensitive. | `string` | n/a | yes |
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_credential_type_id"></a> [credential_type_id](#input_credential_type_id) | Numeric ID of the credential type. Refer to the AWX API or UI to look up credential type IDs. | `number` | n/a | yes |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this credential. | `string` | `null` | no |
+| <a name="input_inputs"></a> [inputs](#input_inputs) | JSON or YAML encoded credential inputs. The fields required depend on the credential type. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input_name) | Name of this credential. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this credential belongs to. | `number` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| id | The ID of the credential. |
-| name | The name of the credential. |
-| organization\_id | The organization ID the credential belongs to. |
-| credential\_type\_id | The credential type ID. |
+| <a name="output_credential_type_id"></a> [credential_type_id](#output_credential_type_id) | The credential type ID. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the credential. |
+| <a name="output_name"></a> [name](#output_name) | The name of the credential. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the credential belongs to. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_credential.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/credential) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_credential_type_id"></a> [credential_type_id](#input_credential_type_id) | Numeric ID of the credential type. Refer to the AWX API or UI to look up credential type IDs. | `number` | n/a | yes |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this credential. | `string` | `null` | no |
+| <a name="input_inputs"></a> [inputs](#input_inputs) | JSON or YAML encoded credential inputs. The fields required depend on the credential type. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input_name) | Name of this credential. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this credential belongs to. | `number` | n/a | yes |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_credential_type_id"></a> [credential_type_id](#output_credential_type_id) | The credential type ID. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the credential. |
+| <a name="output_name"></a> [name](#output_name) | The name of the credential. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the credential belongs to. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_credential.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/credential) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_credential_type_id"></a> [credential_type_id](#input_credential_type_id) | Numeric ID of the credential type. Refer to the AWX API or UI to look up credential type IDs. | `number` | n/a | yes |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this credential. | `string` | `null` | no |
+| <a name="input_inputs"></a> [inputs](#input_inputs) | JSON or YAML encoded credential inputs. The fields required depend on the credential type. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input_name) | Name of this credential. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this credential belongs to. | `number` | n/a | yes |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_credential_type_id"></a> [credential_type_id](#output_credential_type_id) | The credential type ID. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the credential. |
+| <a name="output_name"></a> [name](#output_name) | The name of the credential. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the credential belongs to. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_credential.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/credential) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_credential_type_id"></a> [credential_type_id](#input_credential_type_id) | Numeric ID of the credential type. Refer to the AWX API or UI to look up credential type IDs. | `number` | n/a | yes |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this credential. | `string` | `null` | no |
+| <a name="input_inputs"></a> [inputs](#input_inputs) | JSON or YAML encoded credential inputs. The fields required depend on the credential type. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input_name) | Name of this credential. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this credential belongs to. | `number` | n/a | yes |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_credential_type_id"></a> [credential_type_id](#output_credential_type_id) | The credential type ID. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the credential. |
+| <a name="output_name"></a> [name](#output_name) | The name of the credential. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the credential belongs to. |
 <!-- END_TF_DOCS -->

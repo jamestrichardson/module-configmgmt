@@ -7,13 +7,6 @@ plugin "terraform" {
   preset  = "recommended"
 }
 
-plugin "awx" {
-  # No official TFLint plugin exists for the denouche/awx provider yet;
-  # the terraform built-in plugin above handles schema validation via
-  # `terraform validate`. This block is a placeholder for future use.
-  enabled = false
-}
-
 # Rules
 rule "terraform_required_providers" {
   enabled = true

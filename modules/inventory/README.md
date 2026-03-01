@@ -83,14 +83,18 @@ module "awx_inventory" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 1.3 |
-| awx | >= 0.24 |
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| awx | >= 0.24 |
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+No modules.
 
 ## Resources
 
@@ -104,23 +108,209 @@ module "awx_inventory" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| create | Controls whether resources should be created. | `bool` | `true` | no |
-| name | Name of this inventory. | `string` | n/a | yes |
-| organization\_id | Numeric ID of the organization this inventory belongs to. | `number` | n/a | yes |
-| description | Optional description of this inventory. | `string` | `null` | no |
-| kind | Kind of inventory (`""` for regular or `"smart"`). | `string` | `null` | no |
-| host\_filter | Filter applied to the hosts of this inventory. | `string` | `null` | no |
-| variables | YAML or JSON inventory variables. | `string` | `null` | no |
-| groups | Map of inventory groups to create. | `any` | `{}` | no |
-| sources | Map of inventory sources to create. | `any` | `{}` | no |
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this inventory. | `string` | `null` | no |
+| <a name="input_groups"></a> [groups](#input_groups) | Map of inventory groups to create. Keys are logical group identifiers used within this module. Each group object supports:   - name        (Required) Name of the group   - description (Optional) Description of the group   - variables   (Optional) YAML or JSON group variables | `any` | `{}` | no |
+| <a name="input_host_filter"></a> [host_filter](#input_host_filter) | Filter that will be applied to the hosts of this inventory. | `string` | `null` | no |
+| <a name="input_kind"></a> [kind](#input_kind) | Kind of inventory. Valid values are empty string (regular inventory) or `smart`. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input_name) | Name of this inventory. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this inventory belongs to. | `number` | n/a | yes |
+| <a name="input_sources"></a> [sources](#input_sources) | Map of inventory sources to create. Keys are logical source identifiers used within this module. Each source object supports:   - name                 (Required) Name of the inventory source   - source               (Optional) Source type (e.g. "scm", "ec2", "gce")   - description          (Optional) Description   - credential_id        (Optional) Credential ID   - overwrite            (Optional) Overwrite local groups and hosts from remote inventory source   - overwrite_vars       (Optional) Overwrite local variables from remote inventory source   - update_on_launch     (Optional) Update on launch   - update_cache_timeout (Optional) Cache timeout in seconds   - source_vars          (Optional) Source variables in YAML or JSON format   - source_regions       (Optional) Regions for cloud sources   - instance_filters     (Optional) Comma-separated list of filter expressions   - group_by             (Optional) Comma-separated list of groups to organize hosts into   - host_filter          (Optional) Regex to filter hosts   - enabled_var          (Optional) Variable to use to determine enabled state   - enabled_value        (Optional) Value for enabled_var to consider host enabled   - verbosity            (Optional) Verbosity level (0-2) | `any` | `{}` | no |
+| <a name="input_variables"></a> [variables](#input_variables) | YAML or JSON inventory variables. | `string` | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| id | The ID of the inventory. |
-| name | The name of the inventory. |
-| organization\_id | The organization ID the inventory belongs to. |
-| group\_ids | Map of group logical names to their IDs. |
-| source\_ids | Map of source logical names to their IDs. |
+| <a name="output_group_ids"></a> [group_ids](#output_group_ids) | Map of group logical names to their IDs. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the inventory. |
+| <a name="output_name"></a> [name](#output_name) | The name of the inventory. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the inventory belongs to. |
+| <a name="output_source_ids"></a> [source_ids](#output_source_ids) | Map of source logical names to their IDs. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_inventory.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory) | resource |
+| [awx_inventory_group.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_group) | resource |
+| [awx_inventory_source.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_source) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this inventory. | `string` | `null` | no |
+| <a name="input_groups"></a> [groups](#input_groups) | Map of inventory groups to create. Keys are logical group identifiers used within this module. Each group object supports:   - name        (Required) Name of the group   - description (Optional) Description of the group   - variables   (Optional) YAML or JSON group variables | `any` | `{}` | no |
+| <a name="input_host_filter"></a> [host_filter](#input_host_filter) | Filter that will be applied to the hosts of this inventory. | `string` | `null` | no |
+| <a name="input_kind"></a> [kind](#input_kind) | Kind of inventory. Valid values are empty string (regular inventory) or `smart`. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input_name) | Name of this inventory. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this inventory belongs to. | `number` | n/a | yes |
+| <a name="input_sources"></a> [sources](#input_sources) | Map of inventory sources to create. Keys are logical source identifiers used within this module. Each source object supports:   - name                 (Required) Name of the inventory source   - source               (Optional) Source type (e.g. "scm", "ec2", "gce")   - description          (Optional) Description   - credential_id        (Optional) Credential ID   - overwrite            (Optional) Overwrite local groups and hosts from remote inventory source   - overwrite_vars       (Optional) Overwrite local variables from remote inventory source   - update_on_launch     (Optional) Update on launch   - update_cache_timeout (Optional) Cache timeout in seconds   - source_vars          (Optional) Source variables in YAML or JSON format   - source_regions       (Optional) Regions for cloud sources   - instance_filters     (Optional) Comma-separated list of filter expressions   - group_by             (Optional) Comma-separated list of groups to organize hosts into   - host_filter          (Optional) Regex to filter hosts   - enabled_var          (Optional) Variable to use to determine enabled state   - enabled_value        (Optional) Value for enabled_var to consider host enabled   - verbosity            (Optional) Verbosity level (0-2) | `any` | `{}` | no |
+| <a name="input_variables"></a> [variables](#input_variables) | YAML or JSON inventory variables. | `string` | `null` | no |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_group_ids"></a> [group_ids](#output_group_ids) | Map of group logical names to their IDs. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the inventory. |
+| <a name="output_name"></a> [name](#output_name) | The name of the inventory. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the inventory belongs to. |
+| <a name="output_source_ids"></a> [source_ids](#output_source_ids) | Map of source logical names to their IDs. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_inventory.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory) | resource |
+| [awx_inventory_group.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_group) | resource |
+| [awx_inventory_source.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_source) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this inventory. | `string` | `null` | no |
+| <a name="input_groups"></a> [groups](#input_groups) | Map of inventory groups to create. Keys are logical group identifiers used within this module. Each group object supports:   - name        (Required) Name of the group   - description (Optional) Description of the group   - variables   (Optional) YAML or JSON group variables | `any` | `{}` | no |
+| <a name="input_host_filter"></a> [host_filter](#input_host_filter) | Filter that will be applied to the hosts of this inventory. | `string` | `null` | no |
+| <a name="input_kind"></a> [kind](#input_kind) | Kind of inventory. Valid values are empty string (regular inventory) or `smart`. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input_name) | Name of this inventory. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this inventory belongs to. | `number` | n/a | yes |
+| <a name="input_sources"></a> [sources](#input_sources) | Map of inventory sources to create. Keys are logical source identifiers used within this module. Each source object supports:   - name                 (Required) Name of the inventory source   - source               (Optional) Source type (e.g. "scm", "ec2", "gce")   - description          (Optional) Description   - credential_id        (Optional) Credential ID   - overwrite            (Optional) Overwrite local groups and hosts from remote inventory source   - overwrite_vars       (Optional) Overwrite local variables from remote inventory source   - update_on_launch     (Optional) Update on launch   - update_cache_timeout (Optional) Cache timeout in seconds   - source_vars          (Optional) Source variables in YAML or JSON format   - source_regions       (Optional) Regions for cloud sources   - instance_filters     (Optional) Comma-separated list of filter expressions   - group_by             (Optional) Comma-separated list of groups to organize hosts into   - host_filter          (Optional) Regex to filter hosts   - enabled_var          (Optional) Variable to use to determine enabled state   - enabled_value        (Optional) Value for enabled_var to consider host enabled   - verbosity            (Optional) Verbosity level (0-2) | `any` | `{}` | no |
+| <a name="input_variables"></a> [variables](#input_variables) | YAML or JSON inventory variables. | `string` | `null` | no |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_group_ids"></a> [group_ids](#output_group_ids) | Map of group logical names to their IDs. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the inventory. |
+| <a name="output_name"></a> [name](#output_name) | The name of the inventory. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the inventory belongs to. |
+| <a name="output_source_ids"></a> [source_ids](#output_source_ids) | Map of source logical names to their IDs. |
+<!-- END_TF_DOCS -->
+
+## Requirements
+
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+
+## Providers
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+
+## Modules
+
+## Modules
+
+No modules.
+
+## Resources
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [awx_inventory.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory) | resource |
+| [awx_inventory_group.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_group) | resource |
+| [awx_inventory_source.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/inventory_source) | resource |
+
+## Inputs
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
+| <a name="input_description"></a> [description](#input_description) | Optional description of this inventory. | `string` | `null` | no |
+| <a name="input_groups"></a> [groups](#input_groups) | Map of inventory groups to create. Keys are logical group identifiers used within this module. Each group object supports:   - name        (Required) Name of the group   - description (Optional) Description of the group   - variables   (Optional) YAML or JSON group variables | `any` | `{}` | no |
+| <a name="input_host_filter"></a> [host_filter](#input_host_filter) | Filter that will be applied to the hosts of this inventory. | `string` | `null` | no |
+| <a name="input_kind"></a> [kind](#input_kind) | Kind of inventory. Valid values are empty string (regular inventory) or `smart`. | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input_name) | Name of this inventory. | `string` | n/a | yes |
+| <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this inventory belongs to. | `number` | n/a | yes |
+| <a name="input_sources"></a> [sources](#input_sources) | Map of inventory sources to create. Keys are logical source identifiers used within this module. Each source object supports:   - name                 (Required) Name of the inventory source   - source               (Optional) Source type (e.g. "scm", "ec2", "gce")   - description          (Optional) Description   - credential_id        (Optional) Credential ID   - overwrite            (Optional) Overwrite local groups and hosts from remote inventory source   - overwrite_vars       (Optional) Overwrite local variables from remote inventory source   - update_on_launch     (Optional) Update on launch   - update_cache_timeout (Optional) Cache timeout in seconds   - source_vars          (Optional) Source variables in YAML or JSON format   - source_regions       (Optional) Regions for cloud sources   - instance_filters     (Optional) Comma-separated list of filter expressions   - group_by             (Optional) Comma-separated list of groups to organize hosts into   - host_filter          (Optional) Regex to filter hosts   - enabled_var          (Optional) Variable to use to determine enabled state   - enabled_value        (Optional) Value for enabled_var to consider host enabled   - verbosity            (Optional) Verbosity level (0-2) | `any` | `{}` | no |
+| <a name="input_variables"></a> [variables](#input_variables) | YAML or JSON inventory variables. | `string` | `null` | no |
+
+## Outputs
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_group_ids"></a> [group_ids](#output_group_ids) | Map of group logical names to their IDs. |
+| <a name="output_id"></a> [id](#output_id) | The ID of the inventory. |
+| <a name="output_name"></a> [name](#output_name) | The name of the inventory. |
+| <a name="output_organization_id"></a> [organization_id](#output_organization_id) | The organization ID the inventory belongs to. |
+| <a name="output_source_ids"></a> [source_ids](#output_source_ids) | Map of source logical names to their IDs. |
 <!-- END_TF_DOCS -->

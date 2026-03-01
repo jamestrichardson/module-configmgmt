@@ -51,16 +51,12 @@ module "team_dev" {
 # Credential (SCM / Source Control)
 ################################################################################
 
-data "awx_credential_type" "scm" {
-  name = "Source Control"
-}
-
 module "scm_credential" {
   source = "../../modules/credential"
 
   name               = "${var.name_prefix}-scm"
   organization_id    = module.organization.id
-  credential_type_id = data.awx_credential_type.scm.id
+  credential_type_id = var.scm_credential_type_id
   description        = "Source control credential"
 
   inputs = jsonencode({
