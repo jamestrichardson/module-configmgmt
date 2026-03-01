@@ -40,3 +40,9 @@ variable "scm_password" {
   sensitive   = true
   default     = ""
 }
+
+variable "scm_credential_type_id" {
+  description = "AWX credential type ID for source control (2 = Source Control)."
+  type        = number
+  default     = 2
+}
