@@ -3,12 +3,28 @@
 ## Project Context
 
 This repository is a **Terraform module collection** for managing
-[Ansible AWX](https://github.com/ansible/awx) resources using the
-[denouche/awx](https://registry.terraform.io/providers/denouche/awx/latest/docs)
-provider.  The project is structured after the
+[Ansible AWX](https://github.com/ansible/awx) resources using **dual Terraform providers**:
+
+- **[denouche/awx](https://registry.terraform.io/providers/denouche/awx/latest/docs)** –
+  Core AWX objects: organizations, teams, RBAC, inventories, projects, and credential shells
+- **[ilijamt/awx](https://registry.terraform.io/providers/ilijamt/awx/latest/docs)** –
+  Execution Environments (EE) and controller settings resources
+
+The project is structured after the
 [terraform-aws-modules](https://github.com/terraform-aws-modules) pattern:
 each subdirectory under `modules/` is a standalone, reusable module, and
 `examples/` contains fully-worked usage examples.
+
+### Provider consolidation considerations
+
+The dual-provider architecture is **modular and adaptable**. In the future, if
+the providers are consolidated, modules should be easy to migrate. Design
+patterns:
+
+- Keep provider-specific resources isolated in separate modules when practical
+- Use clear naming conventions to indicate which provider a module relies on
+- Document provider dependencies in each module's README
+- Avoid tight coupling between modules that use different providers
 
 ## Architecture & Conventions
 
@@ -28,7 +44,10 @@ modules/<name>/
 ### Terraform style rules
 
 - Minimum Terraform version: `>= 1.3`
-- Provider source: `denouche/awx`, version `>= 0.24`
+- **Provider requirements:**
+  - `denouche/awx`, version `>= 0.24` – for core AWX resources
+  - `ilijamt/awx`, version `>= 0.7` – for Execution Environments and controller settings
+  - Declare only the provider(s) actually used by each module in `versions.tf`
 - Always define `description` and `type` for every `variable` block.
 - Always define `description` for every `output` block.
 - Use `snake_case` for all resource, variable, local, and output names.
@@ -75,13 +94,20 @@ When Copilot generates Terraform code for this project:
    `bool`, `list(...)`, `map(...)`, `object({...})` over `any`).
 3. Create `versions.tf` for any new module with the standard
    `terraform { required_version … required_providers … }` block.
-4. Add `<!-- BEGIN_TF_DOCS -->` / `<!-- END_TF_DOCS -->` markers in new
+4. **Choose the correct provider** based on the resource type:
+   - Use `denouche/awx` for organizations, teams, RBAC, inventories, projects,
+     and credential resources
+   - Use `ilijamt/awx` for Execution Environment and controller settings resources
+   - If a module needs both providers, declare both in `versions.tf`
+5. Add `<!-- BEGIN_TF_DOCS -->` / `<!-- END_TF_DOCS -->` markers in new
    module README files so `terraform-docs` can inject documentation.
-5. Do **not** hard-code hostnames, passwords, or tokens; always use variables.
-6. Prefer optional attributes (`optional(type, default)`) in `object({})` types
+6. Do **not** hard-code hostnames, passwords, or tokens; always use variables.
+7. Prefer optional attributes (`optional(type, default)`) in `object({})` types
    where it makes sense to allow callers to omit fields.
-7. When writing examples, always include a `provider "awx"` block that reads
+8. When writing examples, always include provider blocks that read
    credentials from variables, never literals.
+9. **Document provider usage** in module README files, clearly stating which
+   provider(s) the module requires.
 
 ## Adding additional Copilot prompts
 
@@ -119,3 +145,23 @@ patterns:
   ]
 }
 ```
+
+### What Copilot Should do
+
+- Add modules (or update existing ones) to `module-configmgmt` if needed:
+  - **Core AWX resources** (using `denouche/awx` provider):
+    - Organization module
+    - Team + RBAC module
+    - Inventory module
+    - Project module
+    - Credential module
+  - **Execution Environment resources** (using `ilijamt/awx` provider):
+    - Execution Environment (EE) module
+    - EE binding module (org default EE / allowed EEs)
+  - **Controller settings resources** (using `ilijamt/awx` provider):
+    - Settings module for AWX/Tower controller configuration
+
+- Keep modules focused on a single provider when possible for easier future
+  consolidation
+- Use descriptive module names that indicate the AWX resource type
+- Provide complete examples showing how modules can work together

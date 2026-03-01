@@ -143,7 +143,6 @@ future support.
 | [terraform](https://developer.hashicorp.com/terraform/install) >= 1.3 | Fmt / validate |
 | [tflint](https://github.com/terraform-linters/tflint) | Terraform linting |
 | [terraform-docs](https://terraform-docs.io/) | README generation |
-| [trivy](https://trivy.dev/) | Security scanning |
 | [Node.js](https://nodejs.org/) >= 18 | commitlint (optional, runs in CI) |
 
 ### Quick start
