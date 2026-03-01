@@ -42,7 +42,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Update major/minor floating tags
         # Creates/moves tags like v1 and v1.2 to point at the new release SHA,
