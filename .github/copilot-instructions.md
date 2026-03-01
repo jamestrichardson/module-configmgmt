@@ -119,3 +119,11 @@ patterns:
   ]
 }
 ```
+
+### What Copilot Should do
+
+- Add modules (or update existing ones) to `module-configmgmt` if needed:
+  - org module
+  - team+rabc module
+  - ee module (ilijamt provider)
+  - ee-binding module (org default EE / allowed EEs)
