@@ -23,13 +23,20 @@ jobs:
       version: ${{ steps.release.outputs.version }}
       upload_url: ${{ steps.release.outputs.upload_url }}
     steps:
+      - name: Generate GitHub App token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.JBOT_APP_ID }}
+          private-key: ${{ secrets.JBOT_APP_KEY }}
+
       - name: Run release-please
         id: release
         uses: googleapis/release-please-action@v4
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
 
   # Optional: tag the release with a v-prefixed semver tag as well so
   # Terraform module sources can pin to a specific version.
