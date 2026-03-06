@@ -18,7 +18,5 @@
   ```
 - Do not create Terraform outputs that expose sensitive values unless the
   output itself is marked `sensitive = true`.
-- Prefer Trivy scan results over manual security review; the pre-commit hook
-  runs `trivy` on every commit.
 - Never commit `.tfvars` files that contain real credentials; add them to
   `.gitignore`.

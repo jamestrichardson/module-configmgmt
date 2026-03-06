@@ -19,7 +19,6 @@ pre-commit install
 # Terraform (https://developer.hashicorp.com/terraform/install)
 # tflint  (https://github.com/terraform-linters/tflint)
 # terraform-docs (https://terraform-docs.io)
-# trivy   (https://trivy.dev)
 ```
 
 ---

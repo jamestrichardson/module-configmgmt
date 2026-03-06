@@ -5,7 +5,6 @@ formatter: "markdown table"
 
 version: ">= 0.17"
 
-header-from: README.md
 footer-from: ""
 
 recursive:
@@ -16,29 +15,15 @@ sections:
   show: []
 
 content: |-
-  {{ .Header }}
-
-  ## Requirements
-
   {{ .Requirements }}
-
-  ## Providers
 
   {{ .Providers }}
 
-  ## Modules
-
   {{ .Modules }}
-
-  ## Resources
 
   {{ .Resources }}
 
-  ## Inputs
-
   {{ .Inputs }}
-
-  ## Outputs
 
   {{ .Outputs }}
 
