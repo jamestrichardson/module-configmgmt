@@ -51,7 +51,7 @@ jobs:
 
       - name: Install terraform-docs
         run: |
-          TFDOCS_VERSION=$(curl -sSL https://api.github.com/repos/terraform-docs/terraform-docs/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
+          TFDOCS_VERSION="v0.20.0"
           curl -sSLo /tmp/terraform-docs.tar.gz \
             "https://github.com/terraform-docs/terraform-docs/releases/download/${TFDOCS_VERSION}/terraform-docs-${TFDOCS_VERSION}-linux-amd64.tar.gz"
           tar -xzf /tmp/terraform-docs.tar.gz -C /usr/local/bin terraform-docs

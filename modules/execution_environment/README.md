@@ -109,7 +109,7 @@ ansible-builder build --tag registry.example.com/ansible-ee:v1.0.0
 
 | Name | Version |
 |------|---------|
-| <a name="provider_awx"></a> [awx](#provider_awx) | 23.8.1 |
+| <a name="provider_awx"></a> [awx](#provider_awx) | >= 0.7 |
 
 ## Modules
 

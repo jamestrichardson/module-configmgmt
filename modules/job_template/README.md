@@ -91,7 +91,7 @@ module "awx_job_template" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_awx"></a> [awx](#provider_awx) | 0.29.1 |
+| <a name="provider_awx"></a> [awx](#provider_awx) | >= 0.24 |
 
 ## Modules
 

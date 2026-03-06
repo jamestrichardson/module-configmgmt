@@ -82,8 +82,7 @@ No modules.
 | <a name="input_description"></a> [description](#input_description) | Optional description of this team. | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input_name) | Name of this team. | `string` | n/a | yes |
 | <a name="input_organization_id"></a> [organization_id](#input_organization_id) | Numeric ID of the organization this team belongs to. | `number` | n/a | yes |
-| <a name="input_role_entitlements"></a> [role_entitlements](#input_role_entitlements) | List of role IDs to grant to this team. Each object must contain a `role_id` attribute. | ```list(object({ role_id = number }))
-``` | `[]` | no |
+| <a name="input_role_entitlements"></a> [role_entitlements](#input_role_entitlements) | List of role IDs to grant to this team. Each object must contain a `role_id` attribute. | ```list(object({ role_id = number }))``` | `[]` | no |
 
 ## Outputs
 
