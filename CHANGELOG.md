@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.2.0](https://github.com/jamestrichardson/module-configmgmt/compare/v0.1.0...v0.2.0) (2026-03-06)
+
+
+### Features
+
+* add AWX automation modules and remove trivy ([0a7a70e](https://github.com/jamestrichardson/module-configmgmt/commit/0a7a70ea6c46e86a01fde88aa79c2f7b281d4d7e))
+* baseline ([ec41c81](https://github.com/jamestrichardson/module-configmgmt/commit/ec41c8155ab8d230355a168ffc984a729e3c250b))
+* baseline ([17cced7](https://github.com/jamestrichardson/module-configmgmt/commit/17cced71f574e7c368f6c7deda8d6cf2b24851be))
+* **ci:** use GitHub App for release-please and rename build workflow ([78fbe38](https://github.com/jamestrichardson/module-configmgmt/commit/78fbe38d6bd138201e6cd7f2153cffcfbfa52d94))
+* initial sonar impl ([66237ea](https://github.com/jamestrichardson/module-configmgmt/commit/66237eaa8042e747a1ee1511b3bc1faa22f8a5ab))
+* initial sonar impl ([3c6ce45](https://github.com/jamestrichardson/module-configmgmt/commit/3c6ce45df867830c11680321a6dc4599c09158ff))
+
+
+### Bug Fixes
+
+* add sonar keys ([f322dee](https://github.com/jamestrichardson/module-configmgmt/commit/f322dee6a7ce933f53559b844e6ec4bc2a096907))
+* **ci:** add version to release-please manifest ([699c3ad](https://github.com/jamestrichardson/module-configmgmt/commit/699c3adc6afd29e14bf72035d09e003e2a63eb05))
+* **ci:** add version to release-please manifest ([d3ea766](https://github.com/jamestrichardson/module-configmgmt/commit/d3ea7662464c17c114584b572e6c06c1d71af05a))
+* **ci:** install pre-commit in workflow ([2b0cfc6](https://github.com/jamestrichardson/module-configmgmt/commit/2b0cfc67461c4135bcf6fffcfbd849321ef86e0f))
+* **ci:** remove duplicate release-type from config ([ff5f775](https://github.com/jamestrichardson/module-configmgmt/commit/ff5f77527ea4606c21c82c41da11325f2dd61105))
+* fix pre-commit running ([bc0e52a](https://github.com/jamestrichardson/module-configmgmt/commit/bc0e52aa538fb43f448aeac4b2b936e1c3214fdd))
+* pre-commit ([474a752](https://github.com/jamestrichardson/module-configmgmt/commit/474a752422f08f86cae51d346e29334482d8b8b6))
+* precommit ([6d1faa1](https://github.com/jamestrichardson/module-configmgmt/commit/6d1faa11c1eb8187726a2fbae83b04fb46cb3a40))
+* precommit files ([60fdef8](https://github.com/jamestrichardson/module-configmgmt/commit/60fdef8b591ac26e532ed223c49585703ae0aa9a))
+* readme's and pre-commit workflow ([d9d0ada](https://github.com/jamestrichardson/module-configmgmt/commit/d9d0ada8d1d253bb386621a38a7925c81ac1c2ce))
+* release-please ([2bf79d7](https://github.com/jamestrichardson/module-configmgmt/commit/2bf79d7853738df1d93d5fa5b262f9e95e7a2d54))
+* release-please ([2365e2c](https://github.com/jamestrichardson/module-configmgmt/commit/2365e2c44b2686003b582a899a9170c2614531cd))
+* release-please ([fce1002](https://github.com/jamestrichardson/module-configmgmt/commit/fce100282eeddb508eb4e95aef259221424da6e4))
+* release-please ([03773f4](https://github.com/jamestrichardson/module-configmgmt/commit/03773f4e63acbece5195c2aef2730eade5e77b2b))
+* update .github/copilot-instructions.md ([4269362](https://github.com/jamestrichardson/module-configmgmt/commit/426936260b78b7cf289aaec84d783111a3f9f064))
+* update .github/workflows/release-please.yml ([e494269](https://github.com/jamestrichardson/module-configmgmt/commit/e49426917dfdc30e0537d9e354ea764ea684b4b1))
+* update .vscode/settings.json ([bff4392](https://github.com/jamestrichardson/module-configmgmt/commit/bff43924a6dfc678dd039738ee5ce21ecdc4a3ee))
+
+
+### Documentation
+
+* copilot instructions ([e15b45c](https://github.com/jamestrichardson/module-configmgmt/commit/e15b45c44d4d4805cd3466efd8e23f0b86f385a1))
+* fix up docs, add modules ([369c2d8](https://github.com/jamestrichardson/module-configmgmt/commit/369c2d89b97bb07c2a412182cdc44780079dc6ed))
+* more copilot instruction prompting ([0fe130a](https://github.com/jamestrichardson/module-configmgmt/commit/0fe130afc4ddfb1f8987583f383bd57f15c26382))
+* update README.md ([3787ca2](https://github.com/jamestrichardson/module-configmgmt/commit/3787ca2d809ca597f123338aab0b0220138857bc))
+
+## Changelog
+
 All notable changes to this project will be documented in this file.
 
 This file is managed automatically by
