@@ -64,6 +64,24 @@ module "flexible_job" {
 }
 ```
 
+### Job Template with Credentials
+
+```hcl
+module "deploy_job" {
+  source = "../../modules/job_template"
+
+  name         = "Deploy Application"
+  inventory_id = module.inventory.id
+  project_id   = module.project.id
+  playbook     = "deploy.yml"
+
+  credential_ids = [
+    module.machine_credential.id,
+    module.vault_credential.id,
+  ]
+}
+```
+
 ## Conditional Creation
 
 ```hcl
@@ -102,6 +120,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [awx_job_template.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/job_template) | resource |
+| [awx_job_template_credential.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/job_template_credential) | resource |
 
 ## Inputs
 
@@ -116,6 +135,8 @@ No modules.
 | <a name="input_ask_tags_on_launch"></a> [ask_tags_on_launch](#input_ask_tags_on_launch) | Prompt for tags on launch. | `bool` | `false` | no |
 | <a name="input_ask_variables_on_launch"></a> [ask_variables_on_launch](#input_ask_variables_on_launch) | Prompt for extra variables on launch. | `bool` | `false` | no |
 | <a name="input_become_enabled"></a> [become_enabled](#input_become_enabled) | Enable privilege escalation. | `bool` | `false` | no |
+| <a name="input_credential_id"></a> [credential_id](#input_credential_id) | Optional single credential ID to attach to the job template. | `number` | `null` | no |
+| <a name="input_credential_ids"></a> [credential_ids](#input_credential_ids) | Optional list of credential IDs to attach to the job template. Any value in credential_id is included automatically. | `list(number)` | `[]` | no |
 | <a name="input_create"></a> [create](#input_create) | Controls whether resources should be created. | `bool` | `true` | no |
 | <a name="input_description"></a> [description](#input_description) | Optional description of this job template. | `string` | `null` | no |
 | <a name="input_diff_mode"></a> [diff_mode](#input_diff_mode) | Show changes made by Ansible tasks. | `bool` | `false` | no |

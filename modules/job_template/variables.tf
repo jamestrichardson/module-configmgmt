@@ -42,6 +42,18 @@ variable "ask_credential_on_launch" {
   default     = false
 }
 
+variable "credential_id" {
+  description = "Optional single credential ID to attach to the job template."
+  type        = number
+  default     = null
+}
+
+variable "credential_ids" {
+  description = "Optional list of credential IDs to attach to the job template. Any value in credential_id is included automatically."
+  type        = list(number)
+  default     = []
+}
+
 variable "ask_inventory_on_launch" {
   description = "Prompt for inventory on launch."
   type        = bool
