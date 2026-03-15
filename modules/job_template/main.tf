@@ -1,5 +1,10 @@
 locals {
   create = var.create
+
+  credential_ids = distinct(concat(
+    var.credential_id == null ? [] : [var.credential_id],
+    var.credential_ids
+  ))
 }
 
 resource "awx_job_template" "this" {
@@ -32,4 +37,13 @@ resource "awx_job_template" "this" {
   verbosity                = var.verbosity
   allow_simultaneous       = var.allow_simultaneous
   force_handlers           = var.force_handlers
+}
+
+resource "awx_job_template_credential" "this" {
+  for_each = local.create ? {
+    for credential_id in local.credential_ids : tostring(credential_id) => credential_id
+  } : {}
+
+  job_template_id = awx_job_template.this[0].id
+  credential_id   = each.value
 }

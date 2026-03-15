@@ -64,7 +64,7 @@ terraform apply
 - **Git Credential**: `demo-git-cred` (for SCM authentication)
 - **Project**: `demo-project` (synced from Git)
 - **Inventory**: `demo-inventory`
-- **Job Template**: `demo-deploy-job`
+- **Job Template**: `demo-deploy-job` (with the SCM credential attached)
 - **Schedule**: `demo-daily-schedule` (runs daily at 2 AM UTC if enabled)
 - **Notification Template**: `demo-slack-notifications` (if enabled)
 

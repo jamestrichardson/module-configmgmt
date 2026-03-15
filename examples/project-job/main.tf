@@ -84,6 +84,7 @@ module "job_template" {
   description    = "Deployment job template"
   become_enabled = true
   verbosity      = 1
+  credential_id  = module.scm_credential.id
 
   extra_vars = jsonencode({
     environment = "demo"
