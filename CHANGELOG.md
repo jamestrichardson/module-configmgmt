@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/jamestrichardson/module-configmgmt/compare/v0.2.0...v0.2.1) (2026-03-15)
+
+
+### Bug Fixes
+
+* job template needs creds ([e6d3d40](https://github.com/jamestrichardson/module-configmgmt/commit/e6d3d40fb9764c98856a57d04ecae3b27af39bba))
+* job template needs creds ([2cf31e1](https://github.com/jamestrichardson/module-configmgmt/commit/2cf31e1edd37582ca60c36f653cf514789138f39))
+
 ## [0.2.0](https://github.com/jamestrichardson/module-configmgmt/compare/v0.1.0...v0.2.0) (2026-03-06)
 
 
