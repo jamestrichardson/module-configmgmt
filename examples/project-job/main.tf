@@ -6,6 +6,10 @@ terraform {
       source  = "denouche/awx"
       version = ">= 0.24"
     }
+    awx_ilijamt = {
+      source  = "ilijamt/awx"
+      version = ">= 0.7"
+    }
   }
 }
 
@@ -14,6 +18,13 @@ provider "awx" {
   username = var.awx_username
   password = var.awx_password
   insecure = var.awx_insecure
+}
+
+provider "awx_ilijamt" {
+  hostname   = var.awx_hostname
+  username   = var.awx_username
+  password   = var.awx_password
+  verify_ssl = !var.awx_insecure
 }
 
 # Organization
@@ -75,16 +86,21 @@ module "inventory" {
 module "job_template" {
   source = "../../modules/job_template"
 
+  providers = {
+    awx = awx_ilijamt
+  }
+
   name         = "${var.name_prefix}-deploy-job"
   job_type     = "run"
   inventory_id = module.inventory.id
   project_id   = module.project.id
   playbook     = var.job_playbook
 
-  description    = "Deployment job template"
-  become_enabled = true
-  verbosity      = 1
-  credential_id  = module.scm_credential.id
+  description     = "Deployment job template"
+  become_enabled  = true
+  verbosity       = 1
+  credential_id   = module.scm_credential.id
+  job_slice_count = var.job_slice_count
 
   extra_vars = jsonencode({
     environment = "demo"

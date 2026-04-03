@@ -15,10 +15,15 @@ output "job_type" {
 
 output "project_id" {
   description = "The project ID of the template."
-  value       = try(awx_job_template.this[0].project_id, null)
+  value       = try(awx_job_template.this[0].project, null)
 }
 
 output "inventory_id" {
   description = "The inventory ID of the template."
-  value       = try(awx_job_template.this[0].inventory_id, null)
+  value       = try(awx_job_template.this[0].inventory, null)
+}
+
+output "job_slice_count" {
+  description = "The number of job slices configured on the template."
+  value       = try(awx_job_template.this[0].job_slice_count, null)
 }

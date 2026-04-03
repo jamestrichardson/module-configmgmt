@@ -3,8 +3,8 @@ terraform {
 
   required_providers {
     awx = {
-      source  = "denouche/awx"
-      version = ">= 0.24"
+      source  = "ilijamt/awx"
+      version = ">= 0.7"
     }
   }
 }
