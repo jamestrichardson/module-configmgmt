@@ -1,8 +1,8 @@
 # AWX Job Template Terraform Module
 
-Terraform module which creates an [AWX Job Template](https://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html) using the [denouche/awx](https://registry.terraform.io/providers/denouche/awx/latest/docs) provider.
+Terraform module which creates an [AWX Job Template](https://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html) using the [ilijamt/awx](https://registry.terraform.io/providers/ilijamt/awx/latest/docs) provider.
 
-**Provider:** [denouche/awx](https://registry.terraform.io/providers/denouche/awx/latest/docs) >= 0.24
+**Provider:** [ilijamt/awx](https://registry.terraform.io/providers/ilijamt/awx/latest/docs) >= 0.7
 
 ## Usage
 
@@ -97,19 +97,36 @@ module "awx_job_template" {
 }
 ```
 
+### Job Template with Job Slicing
+
+```hcl
+module "sliced_deploy" {
+  source = "../../modules/job_template"
+
+  name         = "Sliced Deploy"
+  job_type     = "run"
+  inventory_id = module.inventory.id
+  project_id   = module.project.id
+  playbook     = "site.yml"
+
+  job_slice_count = 4
+  description     = "Deploy across 4 parallel slices of the inventory"
+}
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement_terraform) | >= 1.3 |
-| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.24 |
+| <a name="requirement_awx"></a> [awx](#requirement_awx) | >= 0.7 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_awx"></a> [awx](#provider_awx) | >= 0.24 |
+| <a name="provider_awx"></a> [awx](#provider_awx) | >= 0.7 |
 
 ## Modules
 
@@ -119,8 +136,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [awx_job_template.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/job_template) | resource |
-| [awx_job_template_credential.this](https://registry.terraform.io/providers/denouche/awx/latest/docs/resources/job_template_credential) | resource |
+| [awx_job_template.this](https://registry.terraform.io/providers/ilijamt/awx/latest/docs/resources/job_template) | resource |
+| [awx_job_template_associate_credential.this](https://registry.terraform.io/providers/ilijamt/awx/latest/docs/resources/job_template_associate_credential) | resource |
 
 ## Inputs
 
@@ -129,6 +146,7 @@ No modules.
 | <a name="input_allow_simultaneous"></a> [allow_simultaneous](#input_allow_simultaneous) | Allow multiple jobs from this template to run at once. | `bool` | `false` | no |
 | <a name="input_ask_credential_on_launch"></a> [ask_credential_on_launch](#input_ask_credential_on_launch) | Prompt for credential on launch. | `bool` | `false` | no |
 | <a name="input_ask_inventory_on_launch"></a> [ask_inventory_on_launch](#input_ask_inventory_on_launch) | Prompt for inventory on launch. | `bool` | `false` | no |
+| <a name="input_ask_job_slice_count_on_launch"></a> [ask_job_slice_count_on_launch](#input_ask_job_slice_count_on_launch) | Prompt for job slice count on launch. | `bool` | `false` | no |
 | <a name="input_ask_job_type_on_launch"></a> [ask_job_type_on_launch](#input_ask_job_type_on_launch) | Prompt for job type on launch. | `bool` | `false` | no |
 | <a name="input_ask_limit_on_launch"></a> [ask_limit_on_launch](#input_ask_limit_on_launch) | Prompt for limit on launch. | `bool` | `false` | no |
 | <a name="input_ask_skip_tags_on_launch"></a> [ask_skip_tags_on_launch](#input_ask_skip_tags_on_launch) | Prompt for skip tags on launch. | `bool` | `false` | no |
@@ -145,6 +163,7 @@ No modules.
 | <a name="input_forks"></a> [forks](#input_forks) | Number of parallel processes to use. | `number` | `0` | no |
 | <a name="input_host_config_key"></a> [host_config_key](#input_host_config_key) | Allow provisioning callbacks using this host config key. | `string` | `null` | no |
 | <a name="input_inventory_id"></a> [inventory_id](#input_inventory_id) | Inventory ID for the job template. | `number` | n/a | yes |
+| <a name="input_job_slice_count"></a> [job_slice_count](#input_job_slice_count) | Number of slices to divide the job into. A value greater than 1 causes the job template to launch a workflow that runs the playbook on a subset of the inventory per slice. | `number` | `1` | no |
 | <a name="input_job_tags"></a> [job_tags](#input_job_tags) | Comma-separated list of playbook tags to run. | `string` | `null` | no |
 | <a name="input_job_type"></a> [job_type](#input_job_type) | Job type. Valid values: run, check. | `string` | `"run"` | no |
 | <a name="input_limit"></a> [limit](#input_limit) | Limit the execution to a subset of the inventory. | `string` | `null` | no |
@@ -163,6 +182,7 @@ No modules.
 |------|-------------|
 | <a name="output_id"></a> [id](#output_id) | The ID of the job template. |
 | <a name="output_inventory_id"></a> [inventory_id](#output_inventory_id) | The inventory ID of the template. |
+| <a name="output_job_slice_count"></a> [job_slice_count](#output_job_slice_count) | The number of job slices configured on the template. |
 | <a name="output_job_type"></a> [job_type](#output_job_type) | The job type of the template. |
 | <a name="output_name"></a> [name](#output_name) | The name of the job template. |
 | <a name="output_project_id"></a> [project_id](#output_project_id) | The project ID of the template. |

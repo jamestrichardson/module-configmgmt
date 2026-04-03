@@ -174,3 +174,15 @@ variable "force_handlers" {
   type        = bool
   default     = false
 }
+
+variable "job_slice_count" {
+  description = "Number of slices to divide the job into. A value greater than 1 causes the job template to launch a workflow that runs the playbook on a subset of the inventory per slice."
+  type        = number
+  default     = 1
+}
+
+variable "ask_job_slice_count_on_launch" {
+  description = "Prompt for job slice count on launch."
+  type        = bool
+  default     = false
+}

@@ -65,6 +65,12 @@ variable "job_playbook" {
   default     = "lamp_simple/site.yml"
 }
 
+variable "job_slice_count" {
+  description = "Number of slices to divide the job into. A value greater than 1 launches a sliced workflow that runs the playbook across inventory subsets in parallel."
+  type        = number
+  default     = 1
+}
+
 variable "schedule_rrule" {
   description = "Schedule recurrence rule (RFC5545 format)."
   type        = string
