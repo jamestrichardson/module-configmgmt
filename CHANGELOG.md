@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/jamestrichardson/module-configmgmt/compare/v0.2.1...v0.3.0) (2026-04-03)
+
+
+### Features
+
+* **job_template:** add job slicing support via ilijamt/awx provider ([#15](https://github.com/jamestrichardson/module-configmgmt/issues/15)) ([bee6096](https://github.com/jamestrichardson/module-configmgmt/commit/bee60966d9c42da9a0f4f1b26a02671d722e5027))
+
 ## [0.2.1](https://github.com/jamestrichardson/module-configmgmt/compare/v0.2.0...v0.2.1) (2026-03-15)
 
 
